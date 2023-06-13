@@ -1,6 +1,5 @@
 import telebot
 import time
-import json
 
 # from telebot import types
 #  'YOUR_TOKEN'
