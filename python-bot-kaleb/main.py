@@ -1,9 +1,8 @@
 import telebot
 import time
 
-# from telebot import types
 #  'YOUR_TOKEN'
-token = '6282117339:AAGxTAt4n7Twzzbg9lN7eReZUs025ZApTIs'
+token = '6150914261:AAE_tojoeEGXa2ETIVpiBFyNw8DKH2Ubs28'
 
 # Create a new bot instance
 bot = telebot.TeleBot(token)
@@ -86,8 +85,6 @@ user_progress = {}
 @bot.message_handler(commands=['start'])
 def handle_start(message, chatID=None):
   chat_id = message.chat.id if message is not None else chatID
-  print('--- Start Message ---')
-  print('chatID:', chat_id)
   user_progress[chat_id] = 0
   bot.send_message(chat_id,
                    welcome_question["question"],
@@ -146,7 +143,7 @@ def ask_questions(chatID):
   else:
     bot.send_message(
       chatID,
-      'FINISHED all the questions. Godd 100%! \n \U0001F449 \U0001F449 Wanna try again ?'
+      'FINISHED all the questions. Godd 100%! \n Wanna try again ? \U0001F449 \U0001F449  `/start`'
     )
     time.sleep(2)
     handle_start(None, chatID)
@@ -158,7 +155,6 @@ def correct_wrong(chatID):
   question = questions[index]
   bot.send_message(chatID, "NOP ! the answer wasn't correct.")
   bot.send_message(chatID, f"{question['game-wrong']}")
-
 
 print('bot runnig')
 # Start the bot
